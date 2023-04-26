@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import s from './style.module.scss';
 import { ITask } from '../types';
+import s from './style.module.scss';
 
 interface ITodoProps {
   myTask: ITask;
@@ -59,6 +59,7 @@ export const  Todo:React.FC<ITodoProps> =({ myTask, handleCheck, deleteTask, edi
           {myTask.task}
         </div>
       )}
+      
       <div className={s.todo__del} onClick={() => deleteTask(myTask)}>
         X
       </div>

@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Form } from './components/Form';
 import { Todo } from './components/Todo';
-import s from './components/style.module.scss';
 import { ITask } from './types';
+import s from './components/style.module.scss';
 
 export const App =()=> {
-  // const [tasks, setTasks] = useState<ITask[]>(JSON.parse(localStorage.getItem('tasks')) || []);
-  const [tasks, setTasks] = useState<ITask[]> ([]);
-
-
+  const [tasks, setTasks] = useState<ITask[]>(JSON.parse(localStorage.getItem('tasks') || '') || []);
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
