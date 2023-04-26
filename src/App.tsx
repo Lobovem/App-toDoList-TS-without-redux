@@ -4,16 +4,11 @@ import { Todo } from './components/Todo';
 import s from './components/style.module.scss';
 import { ITask } from './types';
 
-interface IAppProps {
-  handleChangeEdit: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleSubmitEdit: (e: React.FormEvent<HTMLFormElement>) => void;
-  setTodoEdit: (todo: string) => void;
-  changeForEdit: () => void;
+export const App =()=> {
+  // const [tasks, setTasks] = useState<ITask[]>(JSON.parse(localStorage.getItem('tasks')) || []);
+  const [tasks, setTasks] = useState<ITask[]> ([]);
 
-}
 
-const App:React.FC<IAppProps> =({ handleChangeEdit, handleSubmitEdit, setTodoEdit, changeForEdit })=> {
-  const [tasks, setTasks] = useState<ITask[]>(JSON.parse(localStorage.getItem('tasks')) || []);
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -70,11 +65,6 @@ const App:React.FC<IAppProps> =({ handleChangeEdit, handleSubmitEdit, setTodoEdi
             handleCheck={handleCheck}
             deleteTask={deleteTask}
             editTask={editTask}
-            handleChangeEdit={handleChangeEdit}
-            handleSubmitEdit={handleSubmitEdit}
-            addTask={addTask}
-            setTodoEdit={setTodoEdit}
-            changeForEdit={changeForEdit}
           />
         );
       })}
@@ -82,4 +72,3 @@ const App:React.FC<IAppProps> =({ handleChangeEdit, handleSubmitEdit, setTodoEdi
   );
 }
 
-export default App;

@@ -17,7 +17,7 @@ export const  Todo:React.FC<ITodoProps> =({ myTask, handleCheck, deleteTask, edi
     setChangeEdit(!changeEdit);
   };
 
-  const handleChangeEdit = (e) => {
+  const handleChangeEdit = (e:React.ChangeEvent<HTMLInputElement>) => {
     setTodoEdit(e.currentTarget.value);
   };
 
@@ -26,7 +26,7 @@ export const  Todo:React.FC<ITodoProps> =({ myTask, handleCheck, deleteTask, edi
     changeForEdit();
   };
 
-  const handleSubmitEdit = (e) => {
+  const handleSubmitEdit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //Если инпут не пустой, редактируем задачу (на всякий случай чистим пустые пробелы в начале,
     // чтобы небыло просто задачи из пустых пробелов)
@@ -45,8 +45,8 @@ export const  Todo:React.FC<ITodoProps> =({ myTask, handleCheck, deleteTask, edi
       </div>
 
       {changeEdit && (
-        <form>
-          <button onClick={handleSubmitEdit} className={s.todo__btnApply}>
+        <form onSubmit={handleSubmitEdit}>
+          <button  className={s.todo__btnApply}>
             Apply
           </button>
           <input className={s.todo__taskEdit} type="text" value={todoEdit} onChange={handleChangeEdit} />

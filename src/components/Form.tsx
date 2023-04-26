@@ -9,20 +9,14 @@ interface IFormProps {
 export const Form:React.FC<IFormProps> = ({ addTask, deleteAllCompleteTask }) =>{
   const [userInput, setUserInput] = useState<string>('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addTask(userInput);
     setUserInput('');
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(e.currentTarget.value);
-  };
-
-  const handlePressKey = (e) => {
-    if (e.key === 'Enter') {
-      handleSubmit(e);
-    }
   };
 
   return (
@@ -35,7 +29,6 @@ export const Form:React.FC<IFormProps> = ({ addTask, deleteAllCompleteTask }) =>
           name="input"
           value={userInput}
           onChange={handleChange}
-          onKeyDown={handlePressKey}
         />
         <button className={s.todo__add}>+</button>
       </form>
