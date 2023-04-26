@@ -4,7 +4,15 @@ import { Todo } from './components/Todo';
 import s from './components/style.module.scss';
 import { ITask } from './types';
 
-function App({ handleChangeEdit, handleSubmitEdit, setTodoEdit, changeForEdit }) {
+interface IAppProps {
+  handleChangeEdit: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmitEdit: (e: React.FormEvent<HTMLFormElement>) => void;
+  setTodoEdit: (todo: string) => void;
+  changeForEdit: () => void;
+
+}
+
+const App:React.FC<IAppProps> =({ handleChangeEdit, handleSubmitEdit, setTodoEdit, changeForEdit })=> {
   const [tasks, setTasks] = useState<ITask[]>(JSON.parse(localStorage.getItem('tasks')) || []);
 
   useEffect(() => {

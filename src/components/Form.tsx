@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import s from './style.module.scss';
-import { ITask } from '../types';
 
-export function Form({ addTask, deleteAllCompleteTask }) {
+interface IFormProps {
+  addTask: (userInput: string) => void;
+  deleteAllCompleteTask: () => void;
+}
+
+export const Form:React.FC<IFormProps> = ({ addTask, deleteAllCompleteTask }) =>{
   const [userInput, setUserInput] = useState<string>('');
 
   const handleSubmit = (e) => {

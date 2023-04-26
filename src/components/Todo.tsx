@@ -2,7 +2,14 @@ import { useState } from 'react';
 import s from './style.module.scss';
 import { ITask } from '../types';
 
-export function Todo({ myTask, handleCheck, deleteTask, editTask }) {
+interface ITodoProps {
+  myTask: ITask;
+  handleCheck: (id: string) => void;
+  deleteTask: (task: ITask) => void;
+  editTask: (todo: string, myTask: ITask) => void;
+}
+
+export const  Todo:React.FC<ITodoProps> =({ myTask, handleCheck, deleteTask, editTask })=> {
   const [todoEdit, setTodoEdit] = useState<string>('');
   const [changeEdit, setChangeEdit] = useState<boolean>(false);
 
